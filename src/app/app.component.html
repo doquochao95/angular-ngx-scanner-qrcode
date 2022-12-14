@@ -1,131 +1,33 @@
 <div class="container">
-  <h1>ngx-scanner-qrcode</h1>
-
-  <!-- ngx-scanner-qrcode -->
-  <!-- <ngx-scanner-qrcode
-    #action="scanner"
-    [config]="config"
-    (event)="onEvent($event)"
-    (error)="onError($event)"
-  ></ngx-scanner-qrcode> -->
-
-  <!-- data  -->
-  <!-- <p class="data">{{ (action.data | async)?.data }}</p> -->
-
-  <!-- Loading -->
-  <!-- <p *ngIf="action.isLoading">⌛ Loading...</p> -->
-
-  <!-- toggleCamera -->
-  <!-- <button
-    class="btn"
-    [class.btn-info]="!action.isStart"
-    [class.btn-warning]="action.isStart"
-    [disabled]="action.isLoading"
-  >
-    <img
-      *ngIf="!action.isStart"
-      (click)="handle(action, 'start')"
-      src="https://img.icons8.com/ios/50/000000/no-camera--v2.png"
-      width="30px"
-    />
-    <img
-      *ngIf="action.isStart"
-      (click)="handle(action, 'stop')"
-      src="https://img.icons8.com/ios/50/000000/no-camera--v1.png"
-      width="30px"
-    />
-  </button> -->
-
-  <!-- <button
-    class="btn"
-    [class.btn-info]="!action.isStart"
-    [class.btn-warning]="action.isStart"
-    [disabled]="action.isLoading"
-    (click)="handle(action, 'start')"
-  >
-    Start
-  </button>
-  <button
-    class="btn"
-    [class.btn-info]="!action.isStart"
-    [class.btn-warning]="action.isStart"
-    [disabled]="action.isLoading"
-    (click)="handle(action, 'play')"
-  >
-    Play
-  </button>
-  <button
-    class="btn"
-    [class.btn-info]="!action.isStart"
-    [class.btn-warning]="action.isStart"
-    [disabled]="action.isLoading"
-    (click)="handle(action, 'pause')"
-  >
-    Pause
-  </button>
-  <button
-    class="btn"
-    [class.btn-info]="!action.isStart"
-    [class.btn-warning]="action.isStart"
-    [disabled]="action.isLoading"
-    (click)="handle(action, 'stop')"
-  >
-    Stop
-  </button>
-  <button
-    class="btn"
-    [class.btn-info]="!action.isStart"
-    [class.btn-warning]="action.isStart"
-    [disabled]="action.isLoading"
-    (click)="action.download('ngx-scanner-qrcode')"
-  >
-    Cap
-  </button> -->
-  <!-- For select files -->
-  <input
-    #file
-    type="file"
-    (change)="onSelects(file.files)"
-    [multiple]="'multiple'"
-    [accept]="'.jpg, .png, .gif, .jpeg'"
-    class="btn btn-success my-2"
-  />
-
-    <li *ngFor="let row of selectedFiles">
-      <div class="position-relative" style="display: inline-block">
-        <p class="p-4">{{ row.name }}</p>
-        <img
-          class="tile-image"
-          [src]="row.urlQR | safe : 'url'"
-          [alt]="row.name"
-        />
+  <h1>QR code image scanner</h1>
+  <div class="input-group mb-3">
+    <div class="custom-file">
+      <input
+        #file
+        type="file"
+        (change)="onSelects(file.files)"
+        [multiple]="'multiple'"
+        [accept]="'.jpg, .png, .gif, .jpeg'"
+        class="custom-file-input"
+        id="inputGroupFile01"
+      />
+      <label class="custom-file-label" for="inputGroupFile01"
+        >{{filesQtyString}}</label
+      >
+    </div>
+  </div>
+<br>
+  <li *ngFor="let row of selectedFiles">
+    <div class="position-relative" style="display: inline-block">
+      <img
+        class="img-thumbnail h-50 w-auto p-5"
+        [src]="row.urlQR | safe : 'url'"
+        [alt]="row.name"
+      />
+      <div class="card-body">
+        <h5 class="card-title">{{ row.name }}</h5>
         <p class="data">{{ row.data }}</p>
       </div>
-    </li>
-
-  <!-- <div class="position-relative" style="display: inline-flex">
-    <ngx-scanner-qrcode
-      #actionFile="scanner"
-      [src]="
-        'https://raw.githubusercontent.com/id1945/ngx-qrcode-styling/master/ngx-qrcode-styling-for-scanner.png'
-      "
-      [config]="{
-        isDraw: false,
-        style: { width: 'none', height: 'none', background: '#000' }
-      }"
-    >
-      <p class="data">{{ (actionFile.data | async)?.['data'] }}</p>
-    </ngx-scanner-qrcode>
-    <app-overlay [data]="actionFile.data.value"></app-overlay>
-  </div> -->
-
-  <!-- License -->
-  <!-- <p class="center">
-    <a href="https://github.com/id1945/ngx-scanner-face/blob/master/LICENSE"
-      >MIT License</a
-    >
-  </p> -->
-
-  <!-- Copyright -->
-  <!-- <p class="center">Copyright (c) 2022 DaiDH</p> -->
+    </div>
+  </li>
 </div>

@@ -2,8 +2,12 @@ h1,
 h5,
 p {
   font-weight: 600;
-  word-break: break-all;
-  font-family: 'Courier New', Courier, monospace;
+  font-stretch: condensed;
+  word-break:break-all;
+}
+li {
+  list-style-type: none;
+  
 }
 div {
   text-align: center;
